@@ -1,0 +1,33 @@
+|winMan_start
+|winMan_draw
+|winMan_interaction
+|winMan_register
+|winMan_alter
++Elements
+	+Drawing
+		|winMan_D_label
+		|winMan_D_button
+		|winMan_D_frame
+		|winMan_D_table
+		|winMan_D_scrollable
+		|winMan_D_choice
+		|winMan_D_checkbox
+		|winMan_D_list
+	+Interactions
+		|winMan_I_label
+		|winMan_I_button
+		|winMan_I_frame
+		|winMan_I_table
+		|winMan_I_scrollable
+		|winMan_I_choice
+		|winMan_I_checkbox
+		|winMan_I_list
+	|winMan_element
+	|winMan_label
+	|winMan_button
+	|winMan_frame
+	|winMan_table
+	|winMan_scrollable
+	|winMan_choice
+	|winMan_list
+	|winMan_checkbox
