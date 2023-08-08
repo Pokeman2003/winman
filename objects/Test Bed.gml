@@ -22,6 +22,6 @@ action_id=603
 applies_to=self
 */
 if (windowOpen == noone && sprite_index == buttonInv) {
-    windowOpen = winMan_register("Winman Demo!", 255);
+    windowOpen = winMan_register("Winman Demo for Version " + string(VERSION), 255);
 }
 sprite_index = buttonDef;

@@ -3,6 +3,7 @@
 |winMan_interaction
 |winMan_register
 |winMan_alter
+|winMan_destroy
 +Elements
 	+Drawing
 		|winMan_D_label
