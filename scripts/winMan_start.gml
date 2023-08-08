@@ -10,15 +10,15 @@
 
 // Manager settings can be found at the end of the script.
 // DO NOT ALTER THE REST OF THE SCRIPT!
-if (instance_number(self) != 1) { // Don't bother setting up if we already exist elsewhere.
+if (instance_number(self.object_index) != 1) { // Don't bother setting up if we already exist elsewhere.
     instance_destroy();
     break;
 }
 
-windowList = ds_stack_create();
+windowList = ds_priority_create();
 stackTop = noone;
 colorSchema = ds_list_create();
-global.winManager = self;
+global.winManager = self.id;
 activeElement = noone;
 
 // SETTINGS!
@@ -32,6 +32,7 @@ col_reverse = ds_list_create();
 col_inactive = ds_list_create();
 
 windowInactiveScheme = col_inactive; // Color scheme for when a window goes inactive.
+windowNormalScheme = col_normal;    // Default color scheme for when a window is created.
 
 /* Each color scheme has 9 mandatory values.
     Value #     : Name
@@ -61,7 +62,7 @@ ds_list_add(col_normal, c_teal);    // Gradient End
 ds_list_add(col_normal, c_black);   // Title Surrounding
 ds_list_add(col_normal, c_white);   // Exterior Upper
 ds_list_add(col_normal, c_gray);    // Exterior Lower
-ds_list_add(col_normal, c_black);    // Exterior Left
+ds_list_add(col_normal, c_black);   // Exterior Left
 ds_list_add(col_normal, c_gray);    // Exterior Right
 /* Unused, but kept for template purposes.
 ds_list_add(col_normal, noone);    // Element Exterior Upper
