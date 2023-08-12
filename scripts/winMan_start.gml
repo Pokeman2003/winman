@@ -20,10 +20,13 @@ stackTop = noone;
 colorSchema = ds_list_create();
 global.winManager = self.id;
 activeElement = noone;
+moveActive = false;
+pmouse_x = 0;
+pmouse_y = 0;
 
 // SETTINGS!
 allDeactivate = true;       // Whether or not clicking on an empty space deactivates the currently active window
-clearIO = true;             // If interaction with windows(selected window, text box) will clear the IO.
+clearIO = true;             // If interaction with windows(selected window, text box) will clear the mouse IO.
 windowFont = winMan_title;  // What font to use in the title bar.
 
 // Add color schemes here.

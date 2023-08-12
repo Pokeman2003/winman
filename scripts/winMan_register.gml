@@ -5,7 +5,7 @@
     NAME:   winMan_register
     CALLER: Window Object
     PURPOSE:Creates a window and adds it to the stack. Returns a list ID to use with winMan_Alter, or noone on failure.
-    REQUIRE:Title, style, [colorScheme, X, Y, surface, size width, size height.]
+    REQUIRE:Title, style, [colorScheme, X, Y, surface, size width, size height, script to execute.]
 */
 
 /*
@@ -20,7 +20,7 @@
     128 - [RESERVED FOR LATER USE]
 */
 
-var title, style, posX, posY, surfaceID, sizeX, sizeY, colorScheme, windowID;
+var title, style, posX, posY, surfaceID, sizeX, sizeY, colorScheme, windowID, script;
 
 title = string(argument0);
 style = real(argument1);
@@ -31,6 +31,7 @@ surfaceID = noone;
 sizeX = noone;
 sizeY = noone;
 colorScheme = noone;
+script = noone;
 
 // Acquire these parameters.
 if (argument_count > 2)
@@ -45,6 +46,8 @@ if (argument_count > 6)
     sizeY = argument[6];
 if (argument_count > 7)
     colorScheme = argument[7];
+if (argument_count > 8)
+    script = argument[8];
 
 // Determine if the window manager exists.
 if (!instance_exists(global.winManager))
@@ -86,9 +89,12 @@ if (style | 2) {
     calcWidth += 4;
 }
 
+if (script == noone)
+    script = "";
+
 calcHeight += sizeX;
 calcWidth += sizeY;
-elementList = ds_list_create();
+elementList = script;
 // Assemble it
 windowID = ds_list_create();
 // General
@@ -109,5 +115,6 @@ ds_list_add(windowID, calcHeight);
 // Finally add and return.
 calcHeight = ds_priority_size((global.winManager).windowList)
 ds_priority_add((global.winManager).windowList, windowID, calcHeight);
-
+if (style | 32)
+    winMan.stackTop = windowID;
 return windowID;
